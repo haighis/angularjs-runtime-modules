@@ -1,18 +1,9 @@
-/**
- * Created with JetBrains WebStorm.
- * User: raul
- * Date: 17/07/13
- * Time: 12:30
- */
-
-
 
 define(['jQuery', 'underscore'], function (jQuery, _) {
     var modules = [];
     var statesToConfigure = [];
     var modulesToLoad = [];
     var scriptsToLoad = [];
-
 
     //Generates a string array with all the needed modules to load
     function generateModulesToLoad(globalDependencies) {
@@ -29,10 +20,19 @@ define(['jQuery', 'underscore'], function (jQuery, _) {
         return globalDependencies;
     };
 
-
     var init = function () {
+        getModules();
+    }
+
+    function getModules() {
+        // Get modules
+        // They are hard coded for now. in the future they will come from a Module Catalog API end point
+        // get the system modules from json that is a local file that no one can change
+        // Module Catalog - for now is hard coded locally
+        // Module Builder - for now is hard coded locally.
+        // Module Catalog and Module Builder)
         jQuery.ajax({
-            url: "/modules.json",
+            url: "/application.json", 
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -46,9 +46,7 @@ define(['jQuery', 'underscore'], function (jQuery, _) {
                 alert(xhr.status);
                 alert(thrownError);
             }
-
         });
-
     }
 
     function generateStatesToConfigure() {
@@ -86,8 +84,6 @@ define(['jQuery', 'underscore'], function (jQuery, _) {
         modules: modules
 
     }
-
-
 })
 
 

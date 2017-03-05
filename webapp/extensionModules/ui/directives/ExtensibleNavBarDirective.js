@@ -1,9 +1,4 @@
-/**
- * Created with JetBrains WebStorm.
- * User: raul
- * Date: 16/07/13
- * Time: 21:09
- */
+
 define(['angular','ui/module'],function(angular){
     angular.module('DashboardAppUIModule').directive("extNavBar", function () {
         return {

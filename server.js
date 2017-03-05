@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
+
 // configuration ===============================================================
 
 app.use(express.static('./webapp')); 		// set the static files location /public/img will be /img for users
@@ -15,7 +16,9 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
-//var msurl = process.env.natbalmsurl
+var fileUpload = require("express-fileupload");
+
+app.use(fileUpload());
 
 // routes ======================================================================
 require('./app/routes.js')(app);

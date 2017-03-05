@@ -34,15 +34,17 @@ define([
                     templateUrl: './views/main.html',
                     controller: ['$scope', function ($scope) {
                         $scope.awesomeThings = [
-                            'Is HTML5',
-                            'AngularJS Based',
-                            'Yeoman based build process',
-                            'Bootstrap based CSS',
-                            'Karma tests',
-                            'Angular Bootstrap Directives',
-                            'Angular UI Directives',
-                            'Best Practices about code organization',
-                            'Extensible'
+                            'Home Page'
+                        ];
+                    }]
+                });
+
+                $stateProvider.state('system', {
+                    url: '/system',
+                    templateUrl: './views/system.html',
+                    controller: ['$scope', function ($scope) {
+                        $scope.awesomeThings = [
+                            'System'
                         ];
                     }]
                 });
@@ -53,7 +55,16 @@ define([
                     $stateProvider.state(state.stateName, {url: state.url, abstract: state.abstract, templateUrl: state.templateUrl, controller: state.controller});
                 }
             }]).run(['$rootScope', function ($rootScope) {
-                $rootScope.modules = definitionsLoader.modules;
+                var systemModules = _.filter(definitionsLoader.modules, function(module) { 
+                    return module.IsSystem === true; 
+                });
+
+                var applicationModules = _.filter(definitionsLoader.modules, function(module) { 
+                    return module.IsSystem === false; 
+                });
+
+                $rootScope.modules = applicationModules;
+                $rootScope.systemModules = systemModules;
             }]);
         //Now bootstrap application
 

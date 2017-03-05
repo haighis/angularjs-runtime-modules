@@ -1,0 +1,8 @@
+<div class="hero-unit">
+  <h1>System</h1>
+    <p>Output all system modules</p>
+    <p>Module Catalog, Module Configuration</p>
+	<ul class='nav nav-list' ng-repeat='module in systemModules'>
+	    <li ><a href='#/{{module.moduleNamespace}}/main'>{{module.moduleLabel}}</a></li>
+	</ul>
+  </div>

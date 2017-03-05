@@ -2,10 +2,13 @@
 
 <nav class="navbar">
     <div class="navbar-inner">
-        <ul class="nav nav-list">
+        <!-- Only output a home link if there are no modules -->
+        <ul ng-show="modules.length <= -1" class="nav nav-list">
             <li><a href="#/home"> <i class="icon-home"></i>Home</a></li>
 
         </ul>
+        
+        <!-- output all standard modules -->
         <ul class='nav nav-list' ng-repeat='module in modules'>
             <li ><a href='#/{{module.moduleNamespace}}/main'>{{module.moduleLabel}}</a></li>
         </ul>
